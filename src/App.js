@@ -1,13 +1,12 @@
 import { useReducer, useRef } from 'react';
 
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import './App.css';
 
-import MyButton from './components/MyButton';
-import MyHeader from './components/MyHeader';
-
 import { DiaryDispatchContext, DiaryStateContext } from './contexts';
+
+import Home from './pages/Home';
 
 function reducer(state, action) {
   let newState = [];
@@ -86,34 +85,9 @@ function App() {
       <DiaryDispatchContext.Provider value={{ onCreate, onEdit, onRemove }}>
         <BrowserRouter>
           <div className="App">
-            <MyHeader
-              headText="App"
-              leftChild={
-                <MyButton text="왼쪽 버튼" onClick={() => alert('왼쪽 클릭')} />
-              }
-              rightChild={
-                <MyButton
-                  text="오른쪽 버튼"
-                  onClick={() => alert('오른쪽 클릭')}
-                />
-              }
-            />
-            <h1>Hello, React!</h1>
-            <MyButton
-              text="작성완료"
-              type="positive"
-              onClick={() => console.log('clicked!')}
-            />
-            <MyButton
-              text="삭제"
-              type="negative"
-              onClick={() => console.log('delete it!')}
-            />
-            <MyButton
-              text="버튼"
-              type="default"
-              onClick={() => console.log('nothing to do')}
-            />
+            <Routes>
+              <Route path="/" element={<Home />} />
+            </Routes>
           </div>
         </BrowserRouter>
       </DiaryDispatchContext.Provider>
