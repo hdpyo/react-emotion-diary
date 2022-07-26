@@ -16,7 +16,7 @@ function DiaryEditor() {
   const [date, setDate] = useState(getStringDate(new Date()));
 
   return (
-    <div>
+    <div className="DiaryEditor">
       <MyHeader
         headText={'새 일기 쓰기'}
         leftChild={
@@ -26,9 +26,9 @@ function DiaryEditor() {
       <div>
         <section>
           <h4>오늘은 언제인가요?</h4>
-          <div className="input-box">
+          <div className="input_box">
             <input
-              className="input-date"
+              className="input_date"
               type="date"
               name=""
               id=""
