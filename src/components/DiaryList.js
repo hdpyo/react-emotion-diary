@@ -16,9 +16,12 @@ const filterOptionList = [
 
 const ControlMenu = ({ value, onChange, optionList }) => {
   return (
-    <select value={value} onChange={e => onChange(e.target.value)}>
+    <select
+      className="ControlMenu"
+      value={value}
+      onChange={e => onChange(e.target.value)}
+    >
       {optionList.map(item => (
-        // eslint-disable-next-line react/jsx-key
         <option key={item.id} value={item.value}>
           {item.name}
         </option>
@@ -64,22 +67,29 @@ function DiaryList({ diaryList }) {
   };
 
   return (
-    <div>
-      <ControlMenu
-        value={sortType}
-        onChange={setSortType}
-        optionList={sortOptionList}
-      />
-      <ControlMenu
-        value={filter}
-        onChange={setFilter}
-        optionList={filterOptionList}
-      />
-      <MyButton
-        type={'positive'}
-        text={'새 일기 쓰기'}
-        onClick={() => navigate('/new')}
-      />
+    <div className="DiaryList">
+      <div className="menu_wrapper">
+        <div className="left_col">
+          <ControlMenu
+            value={sortType}
+            onChange={setSortType}
+            optionList={sortOptionList}
+          />
+          <ControlMenu
+            value={filter}
+            onChange={setFilter}
+            optionList={filterOptionList}
+          />
+        </div>
+        <div className="right_col">
+          <MyButton
+            type={'positive'}
+            text={'새 일기 쓰기'}
+            onClick={() => navigate('/new')}
+          />
+        </div>
+      </div>
+
       {getProcessedDiaryList().map(item => (
         <div key={item.id}>
           {item.content} {item.emotion}
