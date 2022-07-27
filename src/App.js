@@ -8,6 +8,7 @@ import { DiaryDispatchContext, DiaryStateContext } from './contexts';
 
 import Home from './pages/Home';
 import New from './pages/New';
+import Edit from './pages/Edit';
 
 function reducer(state, action) {
   let newState = [];
@@ -110,6 +111,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/new" element={<New />} />
+              <Route path="/edit/:id" element={<Edit />} />
             </Routes>
           </div>
         </BrowserRouter>
