@@ -30,6 +30,9 @@ export default function Home() {
       currentDate.getFullYear(),
       currentDate.getMonth() + 1,
       0,
+      23,
+      59,
+      59,
     ).getTime();
 
     setData(
