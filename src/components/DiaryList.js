@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useEffect, memo, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -38,6 +38,11 @@ function DiaryList({ diaryList }) {
 
   const [sortType, setSortType] = useState('latest');
   const [filter, setFilter] = useState('all');
+
+  useEffect(() => {
+    const titleElement = document.getElementsByTagName('title')[0];
+    titleElement.innerHTML = `감정 일기장 - 일기 목록`;
+  }, []);
 
   const getProcessedDiaryList = () => {
     const filterCallback = item => {
