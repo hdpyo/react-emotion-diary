@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -16,7 +16,8 @@ const filterOptionList = [
   { id: '3', value: 'bad', name: '안 좋은 감정만' },
 ];
 
-const ControlMenu = ({ value, onChange, optionList }) => {
+// eslint-disable-next-line react/display-name
+const ControlMenu = memo(({ value, onChange, optionList }) => {
   return (
     <select
       className="ControlMenu"
@@ -30,7 +31,7 @@ const ControlMenu = ({ value, onChange, optionList }) => {
       ))}
     </select>
   );
-};
+});
 
 function DiaryList({ diaryList }) {
   const navigate = useNavigate();

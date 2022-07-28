@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -20,9 +20,9 @@ function DiaryEditor({ isEdit, originData }) {
   const [date, setDate] = useState(getStringDate(new Date()));
   const [content, setContent] = useState('');
 
-  const handleClickEmotion = emotion => {
+  const handleClickEmotion = useCallback(emotion => {
     setEmotion(emotion);
-  };
+  }, []);
 
   const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext);
 
