@@ -1,4 +1,4 @@
-import { useReducer, useRef } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -26,7 +26,9 @@ function reducer(state, action) {
       break;
     }
     case 'REMOVE': {
-      newState = state.filter(item => item.id !== action.targetId);
+      newState = state.filter(
+        item => parseInt(item.id) !== parseInt(action.data.targetId),
+      );
       break;
     }
     case 'EDIT': {
@@ -43,6 +45,23 @@ function reducer(state, action) {
 }
 
 function App() {
+  useEffect(() => {
+    const localData = localStorage.getItem('diary');
+
+    if (localData) {
+      // id 가 높은 순으로 정렬한다.
+      const diaryList = JSON.parse(localData).sort(
+        (a, b) => parseInt(b.id) - parseInt(a.id),
+      );
+      dataId.current = parseInt(diaryList[0].id) + 1;
+
+      dispatch({
+        type: 'INIT',
+        data: diaryList,
+      });
+    }
+  }, []);
+
   const [data, dispatch] = useReducer(reducer, []);
 
   const dataId = useRef(1);
