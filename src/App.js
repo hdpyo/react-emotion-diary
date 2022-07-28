@@ -53,12 +53,15 @@ function App() {
       const diaryList = JSON.parse(localData).sort(
         (a, b) => parseInt(b.id) - parseInt(a.id),
       );
-      dataId.current = parseInt(diaryList[0].id) + 1;
 
-      dispatch({
-        type: 'INIT',
-        data: diaryList,
-      });
+      // 빈 배열일 경우 [0] 인덱스에 접근할 수 없다.
+      if (diaryList.length >= 1) {
+        dataId.current = parseInt(diaryList[0].id) + 1;
+        dispatch({
+          type: 'INIT',
+          data: diaryList,
+        });
+      }
     }
   }, []);
 
