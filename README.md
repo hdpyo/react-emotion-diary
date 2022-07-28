@@ -1,3 +1,6 @@
+# 감정 일기장 프로젝트
+![image](https://user-images.githubusercontent.com/55405713/181600891-ec21409b-8fc0-4cfc-98ba-3d0feb3607d2.png)
+
 # 프로젝트 개요
 '한 입 크기로 잘라 먹는 리액트' 강의에서 실습한 '감정 일기장' 프로젝트입니다.
 
