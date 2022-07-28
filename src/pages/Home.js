@@ -37,9 +37,7 @@ export default function Home() {
     );
   }, [diaryList, currentDate]);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  useEffect(() => {}, [data]);
 
   const headText = `
     ${currentDate.getFullYear()}년 

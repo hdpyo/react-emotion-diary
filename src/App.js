@@ -9,6 +9,7 @@ import { DiaryDispatchContext, DiaryStateContext } from './contexts';
 import Home from './pages/Home';
 import New from './pages/New';
 import Edit from './pages/Edit';
+import Diary from './pages/Diary';
 
 function reducer(state, action) {
   let newState = [];
@@ -112,6 +113,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/new" element={<New />} />
               <Route path="/edit/:id" element={<Edit />} />
+              <Route path="/diary/:id" element={<Diary />} />
             </Routes>
           </div>
         </BrowserRouter>
